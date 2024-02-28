@@ -10,7 +10,13 @@ export default function ShowWeather({place, weatherState, updateWeatherObject}) 
           .catch(error => console.error(error));
       }
     
-      useEffect(() => {fetchDataUpdateState()}); 
+      useEffect(() => 
+        {
+          if (place) {
+            fetchDataUpdateState()
+          }
+          }
+          , [place]); 
     return (
         <>
         {weatherState && weatherState.location && (
