@@ -1,22 +1,18 @@
 import { useEffect } from "react";
 const apiUrl = process.env.REACT_APP_WEATHER_APP_URL;
-export default function ShowWeather({place, weatherState, updateWeatherObject}) {
-    const fetchDataUpdateState = () => {
-        fetch(apiUrl + place)
-          .then(response => response.json())
-          .then((json) => {
-            updateWeatherObject(json);
-          })
-          .catch(error => console.error(error));
-      }
-    
+export default function ShowWeather({place, weatherState, updateWeatherObject}) {    
       useEffect(() => 
         {
           if (place) {
-            fetchDataUpdateState()
+            fetch(apiUrl + place)
+              .then(response => response.json())
+              .then((json) => {
+              updateWeatherObject(json);
+          })
+          .catch(error => console.log("error"));
           }
           }
-          , [place]); 
+          , [updateWeatherObject, place]); 
     return (
         <>
         {weatherState && weatherState.location && (
