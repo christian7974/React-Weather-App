@@ -8,15 +8,17 @@ function App() {
   const [finalLocation, updateFinalLocation] = useState('');
 
   const handleButtonClick = () => {
-    updateFinalLocation(tempLocation)
+    updateFinalLocation(tempLocation);
   };
   return (
     <div className='h-24'>
-      <InputPlace value={tempLocation} 
-        onChange={updateTempLocation}
+      <InputPlace 
+        value={tempLocation} 
         updateValue={updateTempLocation}
-        />
-        <button className="bg-blue-100" onClick={handleButtonClick}>Hello</button>
+      />
+        <button 
+          className="bg-blue-100" 
+          onClick={handleButtonClick}>Hello</button>
       <ShowWeather 
         place={finalLocation} 
         weatherState={weatherObject} 

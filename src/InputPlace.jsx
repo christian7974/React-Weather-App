@@ -1,5 +1,4 @@
 export default function InputPlace({value, updateValue}) {
-    // write code to handle the input change event
     function handleInputChange(event) {
       updateValue(event.target.value);
     } 
