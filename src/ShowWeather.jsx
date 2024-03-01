@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 const apiUrl = process.env.REACT_APP_WEATHER_APP_URL;
-export default function ShowWeather({place, weatherState, updateWeatherObject}) {   
+export default function ShowWeather({place, weatherState, updateWeatherObject, unit}) {  
       useEffect(() => 
         {
           if (place) {
@@ -10,7 +10,6 @@ export default function ShowWeather({place, weatherState, updateWeatherObject}) 
               updateWeatherObject(json);
               console.log(json);
               if (json.error) {
-                console.log("something went wrong");
                 updateWeatherObject({error: "Something went wrong. Please try again."})
               }
           })
@@ -18,16 +17,18 @@ export default function ShowWeather({place, weatherState, updateWeatherObject}) 
           }
           }
           , [updateWeatherObject, place]); 
-          // TODO: Add option for user to have the temperature be in Celsius or Fahrenheit
     return (
         <>
           {weatherState && weatherState.location && (
             <>
               <p className='bg-indigo-500'>{weatherState.location.name}</p>
-              <p className='bg-indigo-500'>{weatherState.location.region}</p>
-              <p className='bg-indigo-500'>{weatherState.current.temp_f}&#176;F</p> 
+              <p className='bg-indigo-500'>{weatherState.location.region}</p> 
+              {unit === "C" ? 
+                <p className='bg-indigo-500'>{weatherState.current.temp_c}&#176;C</p> : 
+                <p className='bg-indigo-500'>{weatherState.current.temp_f}&#176;F</p>
+              }
               <img src={weatherState.current.condition.icon} alt={weatherState.current.condition.text} />
-            </>
+            </> 
           )}
           {weatherState.error && (
             <p className="bg-indigo-500">{weatherState.error}</p>
