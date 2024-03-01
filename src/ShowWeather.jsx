@@ -20,14 +20,15 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
     return (
         <>
           {weatherState && weatherState.location && (
-            <div className="bg-red-100 p-4 space-y-4 font-sans">
+            <div className="bg-red-100 p-4 space-y-4 font-sans text-center">
               <p className="mb-4">{weatherState.location.name}</p>
               <p className="mb-4">{weatherState.location.region}</p> 
-              {unit === "C" ? 
+              {unit === "F" ? 
                 <p className="mb-4">{weatherState.current.temp_c}&#176;C</p> : 
                 <p className="mb-4">{weatherState.current.temp_f}&#176;F</p>
               }
-              <img src={weatherState.current.condition.icon} alt={weatherState.current.condition.text} />
+              <img src={weatherState.current.condition.icon} alt={"Icon showing the weather as " + weatherState.current.condition.text} className="mx-auto h-35" />
+              <p className="mb-4">{weatherState.current.condition.text}</p>
             </div> 
           )}
           {weatherState.error && (

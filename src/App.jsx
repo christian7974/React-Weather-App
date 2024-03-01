@@ -12,31 +12,31 @@ function App() {
     updateFinalLocation(tempLocation);
   };
 
-  const [unit, changeUnit] = useState("C");
+  const [unit, changeUnit] = useState("F");
 
   const handleClick = () => {
     changeUnit(value => value === "C" ? "F" : "C");
   };
 
   return (
-    <div className='h-24 text-base'>
+    <div className='h-24 text-base text-center space-x-5'>
       <h1>Enter a place to search the weather at:</h1>
-      
+
       <InputPlace 
         value={tempLocation} 
         updateValue={updateTempLocation}
       />
 
+      <button 
+        className="bg-blue-100 px-4" 
+        onClick={handleButtonClick}>
+        Search Place
+      </button>
+
       <UnitButton 
         onUnitClick={handleClick}
         unit={unit}
       />
-
-      <button 
-        className="bg-blue-100" 
-        onClick={handleButtonClick}>
-        Search Place
-      </button>
 
       <ShowWeather 
         place={finalLocation} 
