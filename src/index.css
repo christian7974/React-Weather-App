@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    background: red;
+@font-face {
+    font-family: 'Avenir';
+    src: url("../public/fonts/AvenirNextCyr-Regular.ttf");
 }

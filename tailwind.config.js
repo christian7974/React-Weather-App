@@ -6,6 +6,13 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      sans:['Avenir', 'system-ui'],
+      serif:['ui-serif', 'Georgia'],
+    }, 
+    fontSize: {
+      base: '28px',
+    }
   },
   plugins: [],
 }

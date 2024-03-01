@@ -19,7 +19,9 @@ function App() {
   };
 
   return (
-    <div className='h-24'>
+    <div className='h-24 text-base'>
+      <h1>Enter a place to search the weather at:</h1>
+      
       <InputPlace 
         value={tempLocation} 
         updateValue={updateTempLocation}
@@ -35,6 +37,7 @@ function App() {
         onClick={handleButtonClick}>
         Search Place
       </button>
+
       <ShowWeather 
         place={finalLocation} 
         weatherState={weatherObject} 
