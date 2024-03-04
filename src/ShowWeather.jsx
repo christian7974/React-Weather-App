@@ -1,4 +1,7 @@
 import { useEffect } from "react";
+import ExtraInfo from "./ExtraInfo";
+
+
 const apiUrl = process.env.REACT_APP_WEATHER_APP_URL;
 export default function ShowWeather({place, weatherState, updateWeatherObject, unit}) {  
       useEffect(() => 
@@ -8,7 +11,6 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
               .then(response => response.json())
               .then((json) => {
               updateWeatherObject(json);
-              console.log(json);
               if (json.error) {
                 updateWeatherObject({error: "Something went wrong. Please try again."})
               }
@@ -17,6 +19,8 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           }
           }
           , [updateWeatherObject, place]); 
+
+    // TODO: Change the Celsius/Fahrenheit button to US/International button (miles/km, celsius/fahrenheit, etc.)
     return (
         <>
           {weatherState && weatherState.location && (
@@ -33,6 +37,10 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           )}
           {weatherState.error && (
             <p className="bg-indigo-500">{weatherState.error}</p>
+          )}
+
+          {weatherState && weatherState.current && (
+            <ExtraInfo weatherState={weatherState} />
           )}
         </>
     );

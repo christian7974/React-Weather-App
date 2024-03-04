@@ -3,7 +3,6 @@ import './App.css';
 import ShowWeather from './ShowWeather';
 import InputPlace from './InputPlace';
 import UnitButton from './UnitButton';
-import ExtraInfo from './ExtraInfo';
 
 function App() {
   const [weatherObject, updateWeatherObject] = useState({});
@@ -19,7 +18,7 @@ function App() {
   const handleClick = () => {
     changeUnit(value => value === "C" ? "F" : "C");
   };
-
+  console.log(weatherObject)
   return (
     <div className='h-24 text-base text-center space-x-5'>
       <h1>Enter a place to search the weather at:</h1>
@@ -46,8 +45,6 @@ function App() {
         updateWeatherObject={updateWeatherObject}
         unit={unit}
       />
-
-      <ExtraInfo />
     </div>
     
   );
