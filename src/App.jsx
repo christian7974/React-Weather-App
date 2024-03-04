@@ -3,6 +3,8 @@ import './App.css';
 import ShowWeather from './ShowWeather';
 import InputPlace from './InputPlace';
 import UnitButton from './UnitButton';
+import ExtraInfo from './ExtraInfo';
+
 function App() {
   const [weatherObject, updateWeatherObject] = useState({});
   const [tempLocation, updateTempLocation] = useState('Boston');
@@ -44,6 +46,8 @@ function App() {
         updateWeatherObject={updateWeatherObject}
         unit={unit}
       />
+
+      <ExtraInfo />
     </div>
     
   );
