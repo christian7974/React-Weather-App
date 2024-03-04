@@ -19,15 +19,14 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           }
           }
           , [updateWeatherObject, place]); 
-
-    // TODO: Change the Celsius/Fahrenheit button to US/International button (miles/km, celsius/fahrenheit, etc.)
+          // TODO: Make the option for ExtraInfo component to appear or not conditionally (using keypress)
     return (
         <>
           {weatherState && weatherState.location && (
             <div className="bg-red-100 p-4 space-y-4 font-sans text-center">
               <p className="mb-4">{weatherState.location.name}</p>
               <p className="mb-4">{weatherState.location.region}</p> 
-              {unit === "F" ? 
+              {unit === "Customary" ? 
                 <p className="mb-4">{weatherState.current.temp_c}&#176;C</p> : 
                 <p className="mb-4">{weatherState.current.temp_f}&#176;F</p>
               }
@@ -40,7 +39,7 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           )}
 
           {weatherState && weatherState.current && (
-            <ExtraInfo weatherState={weatherState} />
+            <ExtraInfo weatherState={weatherState} unit={unit} />
           )}
         </>
     );

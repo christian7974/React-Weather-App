@@ -13,10 +13,10 @@ function App() {
     updateFinalLocation(tempLocation);
   };
 
-  const [unit, changeUnit] = useState("F");
+  const [unit, changeUnit] = useState("Customary");
 
   const handleClick = () => {
-    changeUnit(value => value === "C" ? "F" : "C");
+    changeUnit(value => value === "Metric" ? "Customary" : "Metric");
   };
   console.log(weatherObject)
   return (
