@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import ExtraInfo from "./ExtraInfo";
 
-
 const apiUrl = process.env.REACT_APP_WEATHER_APP_URL;
-export default function ShowWeather({place, weatherState, updateWeatherObject, unit}) {  
+
+export default function ShowWeather({place, weatherState, updateWeatherObject, unit, showExtraInfo}) {
       useEffect(() => 
         {
           if (place) {
@@ -18,8 +18,7 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           .catch(error => console.log("Error"));
           }
           }
-          , [updateWeatherObject, place]); 
-          // TODO: Make the option for ExtraInfo component to appear or not conditionally (using keypress)
+          , [updateWeatherObject, place]);
     return (
         <>
           {weatherState && weatherState.location && (
@@ -37,8 +36,8 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           {weatherState.error && (
             <p className="bg-indigo-500">{weatherState.error}</p>
           )}
-
-          {weatherState && weatherState.current && (
+          
+          {weatherState && weatherState.current && showExtraInfo &&(
             <ExtraInfo weatherState={weatherState} unit={unit} />
           )}
         </>

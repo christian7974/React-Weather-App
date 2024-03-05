@@ -1,13 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import ShowWeather from './ShowWeather';
 import InputPlace from './InputPlace';
 import UnitButton from './UnitButton';
+// FIXME: Entire app component re-renders when the unit button and cmd+k are clicked (unnecessary API calls are made).
 
 function App() {
   const [weatherObject, updateWeatherObject] = useState({});
   const [tempLocation, updateTempLocation] = useState('Boston');
   const [finalLocation, updateFinalLocation] = useState('');
+  const [extraInfoVisible, setExtraInfoVisible] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+        setExtraInfoVisible(visible => !visible);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+  }, []);
+
+  
 
   const handleButtonClick = () => {
     updateFinalLocation(tempLocation);
@@ -18,6 +35,7 @@ function App() {
   const handleClick = () => {
     changeUnit(value => value === "Metric" ? "Customary" : "Metric");
   };
+
   console.log(weatherObject)
   return (
     <div className='h-24 text-base text-center space-x-5'>
@@ -44,6 +62,7 @@ function App() {
         weatherState={weatherObject} 
         updateWeatherObject={updateWeatherObject}
         unit={unit}
+        showExtraInfo={extraInfoVisible}
       />
     </div>
     
