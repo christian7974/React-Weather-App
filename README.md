@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# React Weather App
+## Christian Tropeano
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This is a weather app developed in React that can display the weather in different parts of the world. I used React and Tailwind to style the app, along with an API that I used to get the information on the weather. 
 
-## Available Scripts
+I wanted to get comfortable working with React and I felt that a simple project like this would be an excellent way to hone my skills using React and Tailwind.
 
-In the project directory, you can run:
+## Usage
+While this app is not public anywhere yet, this section will be updated accordingly when the app is published.
 
-### `npm start`
+## Features
+The app can show the user multiple pieces of information on the weather in different parts of the world and the user can toggle between metric or customary units. The user also has the ability to show or hide extra information (including the humidity, wind direction and wind speed) by clicking cmd + k on Mac or ctrl + k on Windows.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Error Handling
+When a user enters in an incorrect location (either they mispelled something or the location does not exist), a different JSON object is returned and the error message is displayed on the page, prompting the user to enter the location again.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Future Enhancements/Features
+- One thing that I want to **fix is that the App component is re-rendered** evertime a keystroke is entered and when the user presses the "Metric/Customary" button or the keystroke to show extra info. This leads to extra, unnecessary API calls.
 
-### `npm test`
+- I also want to add the option to **compare two places and show the differences between the two** (for instance,show the different in temperature, windspeed, etc) so that way if the user wants to travel somewhere, they can compare multiple places before going there.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- I also want to experiment with the Context API to manage state, as I feel like I am managing too many states in my App component and I feel like I could make that component leaner by using the Context API or managing state in child components rather than in the App component.
 
-### `npm run build`
+## Challenges Faced
+One challenge that I faced was working with the Fetch API and the useEffect hook in React. I knew that I needed to call the API in that component, however I needed to get the API from an .env file and the place that the user entered from a different component. I had to pass the props into the correct component and also learn how to get the .env variables from the .env file which I did not know before. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Another challenge that I faced was displaying the information. When the app first opens, there is no object to display, so the app would crash when it first opened. I solved this by adding this line of code ```weatherState && weatherState.location``` when I output the weather information. This code ensures that weather object exists before displaying anything. If it does not exist, then nothing will display and the app would not crash.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Credits
+I learned React through the Udemy Course *React - The Complete Guide 2024* where I worked on multiple guided projects and is where I first started to learn React among other topics (including Tailwind, Styled Components, the Context API, etc). 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The API that I used was from [weatherAPI.com](https://www.weatherapi.com/)
+, an API whose GET method retrieves information about a specified place.

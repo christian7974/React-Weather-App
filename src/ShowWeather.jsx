@@ -10,10 +10,10 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
             fetch(apiUrl + place)
               .then(response => response.json())
               .then((json) => {
-              updateWeatherObject(json);
-              if (json.error) {
-                updateWeatherObject({error: "Something went wrong. Please try again."})
-              }
+                updateWeatherObject(json);
+                if (json.error) {
+                  updateWeatherObject({error: "Something went wrong. Please try again."})
+                }
           })
           .catch(error => console.log("Error"));
           }
