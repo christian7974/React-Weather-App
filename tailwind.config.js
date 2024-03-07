@@ -12,7 +12,14 @@ module.exports = {
     }, 
     fontSize: {
       base: '28px',
-    }
+    }, 
+    colors: {
+      'black': '#433E3F',
+      'green': '#74C947',
+      'white': '#F5F5F5',
+      'grey': '#697268',
+      'blue': '#B7D1DA'
+    },
   },
   plugins: [],
 }

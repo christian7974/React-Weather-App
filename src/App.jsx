@@ -6,7 +6,7 @@ import UnitButton from './UnitButton';
 
 function App() {
   const [weatherObject, updateWeatherObject] = useState({});
-  const [tempLocation, updateTempLocation] = useState('Boston');
+  const [tempLocation, updateTempLocation] = useState('');
   const [finalLocation, updateFinalLocation] = useState('');
   const [extraInfoVisible, setExtraInfoVisible] = useState(false);
 
@@ -35,8 +35,8 @@ function App() {
     changeUnit(value => value === "Metric" ? "Customary" : "Metric");
   };
   return (
-    <div className='h-24 text-base text-center space-x-5'>
-      <h1>Enter a place to search the weather at:</h1>
+    <div className='h-screen text-base text-center space-x-5 bg-black'>
+      <h1 className='text-white'>Enter a place to search the weather at:</h1>
 
       <InputPlace 
         value={tempLocation} 
@@ -44,7 +44,7 @@ function App() {
       />
 
       <button 
-        className="bg-blue-100 px-4" 
+        className="px-4 bg-green rounded-xl" 
         onClick={handleButtonClick}>
         Search Place
       </button>

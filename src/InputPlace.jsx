@@ -8,6 +8,7 @@ export default function InputPlace({value, updateValue}) {
             type='text' 
             value={value} 
             onChange={handleInputChange}
+            placeholder="Enter a place"
         />
     </>)
 }

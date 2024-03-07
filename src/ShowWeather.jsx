@@ -20,9 +20,9 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           }
           , [updateWeatherObject, place]);
     return (
-        <>
+        <div className="pt-4">
           {weatherState && weatherState.location && (
-            <div className="bg-red-100 p-4 space-y-4 font-sans text-center">
+            <div className="bg-grey p-4 space-y-4 font-sans text-center">
               <p className="mb-4">{weatherState.location.name}</p>
               <p className="mb-4">{weatherState.location.region}</p> 
               {unit === "Customary" ? 
@@ -40,6 +40,6 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           {weatherState && weatherState.current && showExtraInfo &&(
             <ExtraInfo weatherState={weatherState} unit={unit} />
           )}
-        </>
+        </div>
     );
 }
