@@ -10,6 +10,8 @@ function App() {
   const [finalLocation, updateFinalLocation] = useState('');
   const [extraInfoVisible, setExtraInfoVisible] = useState(false);
 
+  const recentPlace = localStorage.getItem('recentPlace') || '';
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       if ((event.ctrlKey || event.metaKey) && event.key === "k") {
@@ -27,6 +29,7 @@ function App() {
 
   const handleButtonClick = () => {
     updateFinalLocation(tempLocation);
+    localStorage.setItem('recentPlace', tempLocation);
   };
 
   const [unit, changeUnit] = useState("Customary");
@@ -35,7 +38,7 @@ function App() {
     changeUnit(value => value === "Metric" ? "Customary" : "Metric");
   };
   return (
-    <div className='h-screen text-base text-center space-x-5 bg-black'>
+    <div className='h-screen text-base text-center space-x-5 bg-slate'>
       <h1 className='text-white'>Enter a place to search the weather at:</h1>
 
       <InputPlace 

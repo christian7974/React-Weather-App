@@ -29,7 +29,7 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
                 <p className="mb-4">{weatherState.current.temp_c}&#176;C</p> : 
                 <p className="mb-4">{weatherState.current.temp_f}&#176;F</p>
               }
-              <img src={weatherState.current.condition.icon} alt={"Icon showing the weather as " + weatherState.current.condition.text} className="mx-auto h-35" />
+              <img src={weatherState.current.condition.icon} alt={"Icon showing the weather as " + weatherState.current.condition.text} className="mx-auto h-40" />
               <p className="mb-4">{weatherState.current.condition.text}</p>
             </div> 
           )}
@@ -38,7 +38,10 @@ export default function ShowWeather({place, weatherState, updateWeatherObject, u
           )}
           
           {weatherState && weatherState.current && showExtraInfo &&(
-            <ExtraInfo weatherState={weatherState} unit={unit} />
+            <ExtraInfo 
+              weatherState={weatherState} 
+              unit={unit}
+             />
           )}
         </div>
     );
