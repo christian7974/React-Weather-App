@@ -1,6 +1,6 @@
 export default function ExtraInfo({weatherState, unit}) {
     return (
-        <div className="bg-blue">
+        <div className="bg-red">
             <p>Humidity: {weatherState.current.humidity}%</p>
             <p>Wind Direction: {weatherState.current.wind_dir}</p>
             <p>UV Index: {weatherState.current.uv}</p>

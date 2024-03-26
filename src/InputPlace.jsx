@@ -4,7 +4,7 @@ export default function InputPlace({value, updateValue}) {
     } 
     return (<>
         <input 
-            className='border-2 border-gray-400 bg-white' 
+            className='border-2 border-gray-400 bg-white mx-2' 
             type='text' 
             value={value} 
             onChange={handleInputChange}

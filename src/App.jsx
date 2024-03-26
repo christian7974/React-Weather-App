@@ -11,6 +11,7 @@ function App() {
   const [tempLocation, updateTempLocation] = useState('');
   const [finalLocation, updateFinalLocation] = useState('');
   const [extraInfoVisible, setExtraInfoVisible] = useState(false);
+  const [selectedFromList, setSelectedFromList] = useState('');
 
   const recentPlacesArray = JSON.parse(localStorage.getItem('recentPlaces')) || [];
   const recentPlace = recentPlacesArray[recentPlacesArray.length - 2] || '';
@@ -49,8 +50,9 @@ function App() {
   const handleClick = () => {
     changeUnit(value => value === "Metric" ? "Customary" : "Metric");
   };
+
   return (
-    <div className='h-screen text-base text-center space-x-5 bg-slate'>
+    <div className='h-auto text-base text-center bg-slate'>
       <h1 className='text-white'>Enter a place to search the weather at:</h1>
 
       <InputPlace 
@@ -59,7 +61,7 @@ function App() {
       />
 
       <button 
-        className="px-4 bg-green rounded-xl" 
+        className="px-4 bg-green rounded-xl mx-2" 
         onClick={handleSearchPlaceClick}>
         Search Place
       </button>
@@ -68,6 +70,7 @@ function App() {
         onUnitClick={handleClick}
         unit={unit}
       />
+
       {recentPlace && 
         <RecentPlaceButton
         place={recentPlace}
@@ -76,13 +79,19 @@ function App() {
       
 
       <ShowWeather 
-        place={finalLocation} 
+        place={finalLocation || selectedFromList} 
         weatherState={weatherObject} 
         updateWeatherObject={updateWeatherObject}
         unit={unit}
         showExtraInfo={extraInfoVisible}
       />
-      <RecentPlaces recentPlaces={recentPlacesArray} />
+
+      <RecentPlaces 
+        recentPlaces={recentPlacesArray}
+        updateWeatherObject={updateWeatherObject}
+        setSelectedFromList={setSelectedFromList}
+        updateFinalLocation={updateFinalLocation}
+        />
     </div>
     
   );
