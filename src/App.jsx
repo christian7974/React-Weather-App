@@ -4,6 +4,8 @@ import ShowWeather from './ShowWeather';
 import InputPlace from './InputPlace';
 import UnitButton from './UnitButton';
 import RecentPlaceButton from './RecentPlaceButton';
+import RecentPlaces from './RecentPlaces';
+
 function App() {
   const [weatherObject, updateWeatherObject] = useState({});
   const [tempLocation, updateTempLocation] = useState('');
@@ -12,6 +14,12 @@ function App() {
 
   const recentPlacesArray = JSON.parse(localStorage.getItem('recentPlaces')) || [];
   const recentPlace = recentPlacesArray[recentPlacesArray.length - 2] || '';
+
+  function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -30,7 +38,9 @@ function App() {
 
   const handleSearchPlaceClick = () => {
     updateFinalLocation(tempLocation);
-    recentPlacesArray.push(tempLocation);
+    if (!recentPlacesArray.includes(toTitleCase(tempLocation))) {
+      recentPlacesArray.push(toTitleCase(tempLocation));
+    }
     localStorage.setItem('recentPlaces', JSON.stringify(recentPlacesArray));
   };
 
@@ -58,11 +68,12 @@ function App() {
         onUnitClick={handleClick}
         unit={unit}
       />
-
-      <RecentPlaceButton
+      {recentPlace && 
+        <RecentPlaceButton
         place={recentPlace}
         onClick={() => updateFinalLocation(recentPlace)}
-         />
+        />}
+      
 
       <ShowWeather 
         place={finalLocation} 
@@ -71,6 +82,7 @@ function App() {
         unit={unit}
         showExtraInfo={extraInfoVisible}
       />
+      <RecentPlaces recentPlaces={recentPlacesArray} />
     </div>
     
   );
